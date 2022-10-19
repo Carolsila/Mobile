@@ -1,0 +1,5 @@
+Washers,Detergents,Energy(MJ),Water(L)
+ Washers/Disinfectors Factor Values,0.37,29.41,255
+Washer/Disinfector CO2 per cycle(KGs),0.05,9.29,0.27
+Steam Sterilizer Factor values ,4.277,166.61,760
+Steam Sterilizer CO2 Per cycles(KGs),1.35,35.93,0.8
