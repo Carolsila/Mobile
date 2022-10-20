@@ -10,10 +10,15 @@ import pandas as pd
 # In[443]:
 
 
-df1=pd.read_csv("C:/Users/CAROL/Desktop/Revolution Zero/Laundry.csv")
+df5=pd.read_csv("C:/Users/CAROL/Desktop/Revolution Zero/Laundry.csv")
 
 
 # In[444]:
+df5.set_index("Washers",inplace=True)
+df5.rename(index={'Steam Sterilizer CO2 Per cycles(KGs)':'Steam Sterilizer CO2 per cycles(KGs)'},inplace=True)
+df1=df5.reset_index()
+
+
 
 
 df=df1.melt(id_vars='Washers',value_vars=list(df1.columns[1:]))
@@ -30,7 +35,10 @@ df.rename({'variable':'Factors','value':'Values'},axis=1,inplace=True)
 
 
 DF=pd.read_csv("C:/Users/CAROL/Desktop/Revolution Zero/cotton.csv")
-DF
+
+DF.rename(columns={'50/50 double sheet':'50/50 Double Sheet','50/50 sheet':'50/50 Sheet','100% cotton sheet':'100% Sheet'},inplace=True)
+
+
 
 
 # In[447]:
@@ -51,7 +59,7 @@ DF1.rename({'variable':'Materials','value':'Values'},axis=1,inplace=True)
 
 
 Df=pd.read_csv("C:/Users/CAROL/Desktop/Revolution Zero/Fabric.csv")
-Df
+Df.rename(columns={'Terry towels':'Terry Towels'},inplace=True)
 
 
 # In[450]:
@@ -273,7 +281,7 @@ def drawText1():
         dbc.Card(
             dbc.CardBody([
                 html.Div([
-                    html.H2("Re-usable Surgical Instruments"),
+                    html.H2("Re-Usable Surgical Instruments"),
                 ], style={'textAlign': 'center'}) 
             ])
         ),
@@ -298,7 +306,7 @@ def drawText3():
         dbc.Card(
             dbc.CardBody([
                 html.Div([
-                    html.H2("LCA for Cotton  Fabric production"),
+                    html.H2("LCA for Cotton  Fabric Production"),
                     
                 ], style={'textAlign': 'center','font':12,})
             ])
@@ -312,7 +320,7 @@ def drawText4():
         dbc.Card(
             dbc.CardBody([
                 html.Div([
-                    html.H2("LCA for polyester/cotton shirts "),
+                    html.H2("LCA for Polyester/Cotton Shirts "),
                 ], style={'textAlign': 'center','font':12}) 
             ])
         ),
@@ -356,7 +364,7 @@ colors={'background':'#000000','text':'#000000'}
 app.layout = html.Div(style={'backgroundColor':colors['background']},children=[
     
     html.Div([ 
-        html.H1("   LCA analysis for various materials derived from reports")
+        html.H1(" Revolution-ZEROs Collection of  Life Cycle Analysis(LCA) Data from Reports")
         
     ],style={'textAlign':'center','color':'#FFFFFF'}),
     
@@ -366,25 +374,25 @@ app.layout = html.Div(style={'backgroundColor':colors['background']},children=[
             dbc.Row([
                 dbc.Col([
                     drawText1()
-                ],style={"color":"dark"},xs=12,md=4, lg=4),
+                ],style={"color":"dark"},xs=12,md=6, lg=4),
                 dbc.Col([
                     drawText2()
-                ],xs=12,md=5, lg=4),
+                ],xs=12,md=6, lg=4),
                 dbc.Col([
                     drawText3()
-                ],style={},xs=12,md=4, lg=4),
+                ],style={},xs=12,md=6, lg=4),
                 ],align='center'),            
             html.Br(),
             dbc.Row([
                 dbc.Col([
                     drawFigure() 
-                ],style={'background':'#000000'}, xs=12,md=4, lg=4),
+                ],style={'background':'#000000'}, xs=12,md=6, lg=4),
                 dbc.Col([
                     drawFigure1()
-                ], xs=12, sm=4, md=4),
+                ], xs=12, md=6,lg=4),
                 dbc.Col([
                     drawFigure2() 
-                ], xs=12,md=4, lg=4),
+                ], xs=12,md=6, lg=4),
                 
                ],align='center'), 
             html.Br(),
@@ -392,34 +400,29 @@ app.layout = html.Div(style={'backgroundColor':colors['background']},children=[
                 dbc.Col([ 
                     drawText4()                  
                     
-                ],xs=12,md=4, lg=4),
+                ],xs=12,md=6, lg=4),
                 dbc.Col([
                     drawText5()
-                ],xs=12,md=4, lg=4),
+                ],xs=12,md=6, lg=4),
                 dbc.Col([ 
                     drawText6()
                 
-                ],xs=12,md=4, lg=4)
+                ],xs=12,md=6, lg=4)
                 ],align='center'), 
              html.Br(),
             dbc.Row([
                 dbc.Col([ 
                     drawFigure4()       
                     
-                ],xs=12,md=4, lg=4), 
+                ],xs=12,md=6, lg=4),
                 
                 dbc.Col([
                     drawFigure3()
                 
-                ],style={'color':'dark'},xs=12,md=4, lg=4),
+                ],style={'color':'dark'},xs=12,md=6, lg=4),
                  dbc.Col([ 
-                    html.P("The energy used is like burning 0.84 gallons of gasoline"), 
-                    html.Br(),
-                    html.P("The CO2 is like burning 1 gallon of propane"),
-                    html.Br(),
-                    html.P ("The water used is the average of 15 bathtubs"),
-                    #html.Br(),
-                   # html.Img(src = app.get_asset_url('logo.jpg'), className = 'logo'),                    
+
+                   html.Img(src = app.get_asset_url('logo.jpg'), className = 'logo'),
                     
                 ],style={'color':'#FFFFFF'}),
                               
